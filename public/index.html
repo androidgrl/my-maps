@@ -7,32 +7,9 @@
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <title>React App</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-
-      #map {
-        height: 100%;
-      }
-    </style>
   </head>
   <body>
-    <div id="map"></div>
     <div id="root"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: -17.506621, lng: -149.821926}
-        });
-      }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=%REACT_APP_APIKEY%&callback=initMap">
-    </script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
