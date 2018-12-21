@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  state: {
+    map: ''
+  }
+
   componentDidMount() {
     this.renderMap();
   }
@@ -12,10 +16,22 @@ class App extends Component {
   }
 
   initMap = () => {
-    new window.google.maps.Map(document.getElementById('map'), {
+    const map = new window.google.maps.Map(document.getElementById('map'), {
       zoom: 13,
       center: {lat: -17.506621, lng: -149.821926}
     });
+    this.setState({map})
+    this.initMarkers();
+  }
+
+  initMarkers = () => {
+    this.props.places.forEach((place) => {
+      new window.google.maps.Marker({
+        position: place.position,
+        map: this.state.map,
+        title: place.title
+      })
+    })
   }
 
   render() {
