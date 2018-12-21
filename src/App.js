@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.renderMap();
+  }
+
+  renderMap = () => {
+    loadScript(this.props.url);
+    window.initMap = this.initMap;
+  }
+
   initMap = () => {
-    const map = new google.maps.Map(document.getElementById('map'), {
+    new window.google.maps.Map(document.getElementById('map'), {
       zoom: 13,
       center: {lat: -17.506621, lng: -149.821926}
     });
@@ -11,8 +20,10 @@ class App extends Component {
 
   render() {
     return (
-      <div id="map">
-      </div>
+      <main>
+        <div id="map">
+        </div>
+      </main>
     );
   }
 }
@@ -23,8 +34,7 @@ function loadScript(url) {
   script.src = url;
   script.async = true;
   script.defer = true;
+  noScript.insertAdjacentElement('beforebegin', script);
 }
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=%REACT_APP_APIKEY%&callback=initMap">
-    </script>
 
 export default App;
