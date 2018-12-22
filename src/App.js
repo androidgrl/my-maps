@@ -26,11 +26,19 @@ class App extends Component {
 
   initMarkers = () => {
     this.props.places.forEach((place) => {
-      new window.google.maps.Marker({
+      const marker = new window.google.maps.Marker({
         position: place.position,
         map: this.state.map,
         title: place.title
       })
+
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: place.title
+      })
+
+      marker.addListener('click', function() {
+        infoWindow.open(this.state.map, marker)
+      }.bind(this))
     })
   }
 
