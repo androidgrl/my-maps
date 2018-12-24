@@ -33,7 +33,7 @@ class App extends Component {
       })
 
       const infoWindow = new window.google.maps.InfoWindow({
-        content: venue.name
+        content: `${venue.name}, ${venue.categories[0].name}`
       })
 
       marker.addListener('click', function() {
