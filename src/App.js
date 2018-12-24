@@ -3,8 +3,8 @@ import SideBar from './SideBar';
 import './App.css';
 
 class App extends Component {
-  state: {
-    map: ''
+  state = {
+    map: '',
   }
 
   componentDidMount() {
@@ -60,7 +60,7 @@ class App extends Component {
       <main>
         <div id="map">
         </div>
-        <SideBar />
+        <SideBar venues={this.props.venues} />
       </main>
     );
   }
