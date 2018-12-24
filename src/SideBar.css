@@ -8,7 +8,10 @@
   position: absolute;
   width: 20%;
   height: 100%;
-  float: left;
+}
+
+#sidebar.active {
+  left: -270px;
 }
 
 #sidebar ul {
