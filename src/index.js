@@ -4,35 +4,23 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const key = process.env.REACT_APP_APIKEY
-const places = [
-  {
-    position: {
-      lat: -17.4887889, lng: -149.9130473
-    }, title: 'Coco Beach Restaurant'
-  },
-  {
-    position: {
-      lat: -17.501757, lng: -149.8509206
-    }, title: 'Tropical Garden Restaurant'
-  },
-  {
-    position: {
-      lat: -17.4873481, lng: -149.8459982
-    }, title: 'Lilikoi Garden Cafe'
-  },
-  {
-    position: {
-      lat: -17.4990726, lng: -149.9138653
-    }, title: 'Restaurant Le Mayflower'
-  },
-  {
-    position: {
-      lat: -17.4916361, lng: -149.8828992
-    }, title: 'Snack Mahana'
-  }
+const googleKey = process.env.REACT_APP_GOOGLEKEY
+const venueIds = [
+  '4e552fa722710ebb5a93c821',
+  '52169fdf11d2695f4e14db6c',
+  '502d75d9e4b06ef10ce7a87a',
+  '578989a7cd109da29e2f9102',
+  '5b594e42175562002cf2b547'
 ]
 
-ReactDOM.render(<App url={"https://maps.googleapis.com/maps/api/js?v=3&key=" + key + "&callback=initMap"} places={places} />, document.getElementById('root'));
+const requests = venueIds.map((id) => {
+  return fetch("https://api.foursquare.com/v2/venues/" + id + "?v=20120610&client_id=" + process.env.REACT_APP_FOURSQUARE_ID + "&client_secret=" + process.env.REACT_APP_FOURSQUARE_SECRET).then((res) => res.json())
+})
+
+Promise.all(requests).then((responses) => {
+  const venues = responses.map((res) => res.response.venue);
+  ReactDOM.render(<App url={"https://maps.googleapis.com/maps/api/js?v=3&key=" + googleKey + "&callback=initMap"} venues={venues} />, document.getElementById('root'));
+})
+
 
 serviceWorker.unregister();
