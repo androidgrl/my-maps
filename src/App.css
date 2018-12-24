@@ -39,4 +39,6 @@ html, body {
 
 #map {
   height: 100vh;
+  width: 80%;
+  float: right;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SideBar from './SideBar';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +19,12 @@ class App extends Component {
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       zoom: 14,
-      center: {lat: -17.506621, lng: -149.891926}
+      center: {lat: -17.506621, lng: -149.891926},
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: window.google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: window.google.maps.ControlPosition.TOP_CENTER
+      }
     });
     this.setState({map})
     this.initMarkers();
@@ -54,6 +60,7 @@ class App extends Component {
       <main>
         <div id="map">
         </div>
+        <SideBar />
       </main>
     );
   }

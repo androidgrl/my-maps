@@ -1,0 +1,38 @@
+.bar-header {
+  margin: 3em;
+}
+
+#sidebar {
+  color: lightgray;
+  background-color: black;
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+
+#sidebar ul {
+  list-style: none;
+}
+
+#sidebar li {
+  padding: 0.5em;
+}
+
+.toggle-button {
+  position: absolute;
+  left: 280px;
+  top: 20px;
+}
+
+.toggle-button span {
+  display: block;
+  width: 30px;
+  height: 5px;
+  background-color: black;
+  margin: 3px 0px;
+  border: grey;
+  border-width: 1.3px;
+  border-radius: 3px;
+  border-style: solid;
+}
