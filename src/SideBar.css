@@ -16,10 +16,16 @@
 
 #sidebar ul {
   list-style: none;
+  padding: 0;
 }
 
 #sidebar li {
   padding: 0.5em;
+  color: #A4A4A4;
+}
+
+#sidebar li:hover {
+  background-color: #2e242c;
 }
 
 .toggle-button {
@@ -44,6 +50,8 @@ label {
   display: block;
   padding: 0.5em 0.7em;
   font-size: 18px;
+  font-weight: bold;
+  color: #A4A4A4;
 }
 
 input {
