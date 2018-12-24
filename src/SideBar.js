@@ -10,7 +10,9 @@ class SideBar extends Component {
           <span></span>
           <span></span>
         </div>
-        <span class="bar-header">Featured Locations</span>
+        <label for="location-search">Filter Locations</label>
+          <input type="search" id="location-search" name="query" aria-label="Filter map locations"/>
+        <button>Filter</button>
         <ul>
           <li>Hi</li>
           <li>Bye</li>

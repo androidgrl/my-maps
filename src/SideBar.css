@@ -5,7 +5,7 @@
 #sidebar {
   color: lightgray;
   background-color: black;
-  position: fixed;
+  position: absolute;
   width: 20%;
   height: 100%;
   float: left;
@@ -35,4 +35,22 @@
   border-width: 1.3px;
   border-radius: 3px;
   border-style: solid;
+}
+
+label {
+  display: block;
+  padding: 0.5em 0.7em;
+  font-size: 18px;
+}
+
+input {
+  width: 75%;
+  border: none;
+  height: 4%;
+}
+
+button {
+  background: dodgerblue;
+  width: 25%;
+  height: 4%;
 }
