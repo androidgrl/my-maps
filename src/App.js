@@ -29,6 +29,7 @@ class App extends Component {
       const marker = new window.google.maps.Marker({
         position: {lat: venue.location.lat, lng: venue.location.lng},
         map: this.state.map,
+        animation: window.google.maps.Animation.DROP,
         title: venue.name
       })
 
@@ -37,9 +38,15 @@ class App extends Component {
       })
 
       marker.addListener('click', function() {
-        infoWindow.open(this.state.map, marker)
+        infoWindow.open(this.state.map, marker);
+        this.bounceMarker(marker);
       }.bind(this))
     })
+  }
+
+  bounceMarker = (marker) => {
+    marker.setAnimation(window.google.maps.Animation.BOUNCE);
+    setTimeout(function(){ marker.setAnimation(null); }, 500);
   }
 
   render() {
