@@ -19,8 +19,8 @@ class SideBar extends Component {
           <input type="search" id="location-search" name="query" aria-label="Filter map locations"/>
         <button>Filter</button>
         <ul>
-          {this.props.markers.map((marker) => (
-            <li key={marker.title}>{marker.title}</li>
+          {this.props.markersAndWindows.map((object) => (
+            <li key={object.marker.title} onClick={() => this.props.bounceMarkerAndOpenWindow(object.marker, object.infoWindow, this.props.map)}>{object.marker.title}</li>
           ))}
         </ul>
       </div>

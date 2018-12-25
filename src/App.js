@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   state = {
     map: '',
-    markers: []
+    markersAndWindows: []
   }
 
   componentDidMount() {
@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   initMarkers = () => {
-    const markers = this.props.venues.map((venue) => {
+    const markersAndWindows = this.props.venues.map((venue) => {
       const marker = new window.google.maps.Marker({
         position: {lat: venue.location.lat, lng: venue.location.lng},
         map: this.state.map,
@@ -45,16 +45,16 @@ class App extends Component {
       })
 
       marker.addListener('click', function() {
-        infoWindow.open(this.state.map, marker);
-        this.bounceMarker(marker);
+        this.bounceMarkerAndOpenWindow(marker, infoWindow, this.state.map);
       }.bind(this))
 
-      return marker;
+      return {marker: marker, infoWindow: infoWindow};
     })
-    this.setState({markers})
+    this.setState({markersAndWindows})
   }
 
-  bounceMarker = (marker) => {
+  bounceMarkerAndOpenWindow = (marker, infoWindow, map) => {
+    infoWindow.open(map, marker);
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(function(){ marker.setAnimation(null); }, 500);
   }
@@ -64,7 +64,7 @@ class App extends Component {
       <main>
         <div id="map">
         </div>
-        <SideBar markers={this.state.markers} />
+        <SideBar markersAndWindows={this.state.markersAndWindows} bounceMarkerAndOpenWindow={this.bounceMarkerAndOpenWindow} map={this.state.map} />
       </main>
     );
   }
