@@ -5,6 +5,7 @@ import './App.css';
 class App extends Component {
   state = {
     map: '',
+    markers: []
   }
 
   componentDidMount() {
@@ -31,7 +32,7 @@ class App extends Component {
   }
 
   initMarkers = () => {
-    this.props.venues.forEach((venue) => {
+    const markers = this.props.venues.map((venue) => {
       const marker = new window.google.maps.Marker({
         position: {lat: venue.location.lat, lng: venue.location.lng},
         map: this.state.map,
@@ -47,7 +48,10 @@ class App extends Component {
         infoWindow.open(this.state.map, marker);
         this.bounceMarker(marker);
       }.bind(this))
+
+      return marker;
     })
+    this.setState({markers})
   }
 
   bounceMarker = (marker) => {
@@ -60,7 +64,7 @@ class App extends Component {
       <main>
         <div id="map">
         </div>
-        <SideBar venues={this.props.venues} />
+        <SideBar markers={this.state.markers} />
       </main>
     );
   }
