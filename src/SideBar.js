@@ -21,12 +21,21 @@ class SideBar extends Component {
   render() {
     let filterTerm = this.state.filterTerm;
     let filteredMarkersAndWindows;
+    let leftoverMarkersAndWindows;
 
     if (filterTerm) {
       const match = new RegExp(escapeRegExp(filterTerm), 'i');
-      filteredMarkersAndWindows = this.props.markersAndWindows.filter((object) => match.test(object.marker.title))
+      filteredMarkersAndWindows = this.props.markersAndWindows.filter((object) => match.test(object.marker.title));
+      leftoverMarkersAndWindows = this.props.markersAndWindows.filter((object) => !match.test(object.marker.title));
+      leftoverMarkersAndWindows.forEach((object) => {
+        object.marker.setVisible(false);
+        object.infoWindow.close();
+      })
     } else {
       filteredMarkersAndWindows = this.props.markersAndWindows;
+      filteredMarkersAndWindows.forEach((object) => {
+        object.marker.setVisible(true);
+      })
     }
 
     return(
