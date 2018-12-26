@@ -11,7 +11,7 @@
 }
 
 #sidebar.active {
-  left: -270px;
+  left: -20%;
 }
 
 #sidebar ul {
@@ -30,7 +30,7 @@
 
 .toggle-button {
   position: absolute;
-  left: 280px;
+  left: 105%;
   top: 20px;
 }
 
@@ -64,4 +64,24 @@ input.search-button {
   background: dodgerblue;
   width: 25%;
   height: 2em;
+}
+
+@media only screen and (max-width: 900px) {
+  #sidebar {
+    width: 30%;
+  }
+
+  #sidebar.active {
+    left: -30%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #sidebar {
+    width: 50%;
+  }
+
+  #sidebar.active {
+    left: -50%;
+  }
 }
