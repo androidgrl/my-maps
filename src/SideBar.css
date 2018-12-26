@@ -46,7 +46,7 @@
   border-style: solid;
 }
 
-label {
+label.search-label {
   display: block;
   padding: 0.5em 0.7em;
   font-size: 18px;
@@ -54,14 +54,14 @@ label {
   color: #A4A4A4;
 }
 
-input {
+#search-field {
   width: 75%;
   border: none;
-  height: 4%;
+  height: 2em;
 }
 
-button {
+input.search-button {
   background: dodgerblue;
   width: 25%;
-  height: 4%;
+  height: 2em;
 }
