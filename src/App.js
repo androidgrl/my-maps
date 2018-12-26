@@ -5,7 +5,8 @@ import './App.css';
 class App extends Component {
   state = {
     map: '',
-    markersAndWindows: []
+    markersAndWindows: [],
+    currentWindow: null
   }
 
   componentDidMount() {
@@ -54,6 +55,10 @@ class App extends Component {
   }
 
   bounceMarkerAndOpenWindow = (marker, infoWindow, map) => {
+    if (this.state.currentWindow) {
+      this.state.currentWindow.close();
+    }
+    this.setState({currentWindow: infoWindow})
     infoWindow.open(map, marker);
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(function(){ marker.setAnimation(null); }, 500);
