@@ -8,8 +8,24 @@ class SideBar extends Component {
   }
 
   toggleSidebar = () => {
-    const sidebar = document.getElementById('sidebar')
+    const sidebar = document.getElementById('sidebar');
+    const toggleArrow = document.getElementById('toggle-arrow');
+    const listItems = document.getElementsByClassName('list-button');
+    const searchButton = document.getElementById('search-button')
+    const searchField = document.getElementById('search-field')
+
     sidebar.classList.toggle('active');
+    if (toggleArrow.className === "arrow left") {
+      toggleArrow.className = "arrow right";
+      searchButton.tabIndex = -1;
+      searchField.tabIndex = -1;
+      [].forEach.call(listItems, (item) => item.tabIndex = -1);
+    } else {
+      toggleArrow.className = "arrow left";
+      searchButton.tabIndex = 1;
+      searchField.tabIndex = 1;
+      [].forEach.call(listItems, (item) => item.tabIndex = 1);
+    }
   }
 
   updateFilterTerm = (event) => {
@@ -40,18 +56,16 @@ class SideBar extends Component {
 
     return(
       <div id="sidebar">
-        <div className="toggle-button" onClick={this.toggleSidebar} tabIndex="1">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <button className="toggle-button" onClick={this.toggleSidebar} tabIndex="1">
+          <i id="toggle-arrow" className="arrow left"></i>
+        </button>
         <form onSubmit={this.updateFilterTerm}>
           <label className="search-label" htmlFor="location-search">Filter Locations</label>
-          <input type="search" id="search-field" name="query" aria-label="Filter map locations" tabIndex="1"/>
-          <input className="search-button" type="submit" value="Filter" tabIndex="1"/>
+          <input id="search-field" type="search" name="query" aria-label="Filter map locations" tabIndex="1"/>
+          <input id="search-button" type="submit" value="Filter" tabIndex="1"/>
         </form>
         {filteredMarkersAndWindows.map((object) => (
-          <button key={object.marker.title} onClick={() => this.props.bounceMarkerAndOpenWindow(object.marker, object.infoWindow, this.props.map)} tabIndex="1">{object.marker.title}</button>
+          <button className="list-button" key={object.marker.title} onClick={() => this.props.bounceMarkerAndOpenWindow(object.marker, object.infoWindow, this.props.map)} tabIndex="1">{object.marker.title}</button>
         ))}
       </div>
     )

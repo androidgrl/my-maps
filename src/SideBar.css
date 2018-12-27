@@ -14,7 +14,7 @@
   left: -20%;
 }
 
-#sidebar button {
+button.list-button {
   width: 100%;
   padding: 1em;
   color: lightgray;
@@ -24,30 +24,21 @@
   border: none;
 }
 
-#sidebar button:focus {
+button.list-button:focus {
   background-color: #333333;
 }
 
-#sidebar button:hover {
+button.list-button:hover {
   background-color: #333333;
 }
 
-.toggle-button {
+button.toggle-button {
+  background-color: white;
   position: absolute;
-  left: 105%;
+  left: 100%;
   top: 20px;
-}
-
-.toggle-button span {
-  display: block;
-  width: 30px;
-  height: 5px;
-  background-color: black;
-  margin: 3px 0px;
-  border: grey;
-  border-width: 1.3px;
-  border-radius: 3px;
-  border-style: solid;
+  height: 4em;
+  width: 2em;
 }
 
 label.search-label {
@@ -64,10 +55,27 @@ label.search-label {
   height: 2em;
 }
 
-input.search-button {
+#search-button {
   background: dodgerblue;
   width: 25%;
   height: 2em;
+}
+
+i#toggle-arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 @media only screen and (max-width: 900px) {
