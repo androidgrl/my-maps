@@ -11,19 +11,22 @@ class SideBar extends Component {
     const sidebar = document.getElementById('sidebar');
     const toggleArrow = document.getElementById('toggle-arrow');
     const listItems = document.getElementsByClassName('list-button');
-    const searchButton = document.getElementById('search-button')
-    const searchField = document.getElementById('search-field')
+    const searchButton = document.getElementById('search-button');
+    const searchField = document.getElementById('search-field');
+    const toggleButton = document.getElementById('toggle-button');
 
     sidebar.classList.toggle('active');
     if (toggleArrow.className === "arrow left") {
       toggleArrow.className = "arrow right";
       searchButton.tabIndex = -1;
       searchField.tabIndex = -1;
+      toggleButton.setAttribute('aria-expanded', "false");
       [].forEach.call(listItems, (item) => item.tabIndex = -1);
     } else {
       toggleArrow.className = "arrow left";
       searchButton.tabIndex = 1;
       searchField.tabIndex = 1;
+      toggleButton.setAttribute('aria-expanded', "true");
       [].forEach.call(listItems, (item) => item.tabIndex = 1);
     }
   }
@@ -56,7 +59,7 @@ class SideBar extends Component {
 
     return(
       <div id="sidebar">
-        <button className="toggle-button" onClick={this.toggleSidebar} tabIndex="1">
+        <button id="toggle-button" onClick={this.toggleSidebar} tabIndex="1">
           <i id="toggle-arrow" className="arrow left"></i>
         </button>
         <form onSubmit={this.updateFilterTerm}>

@@ -67,7 +67,7 @@ class App extends Component {
   render() {
     return (
       <main>
-        <div id="map">
+        <div id="map" role="application" arial-label="location">
         </div>
         <SideBar markersAndWindows={this.state.markersAndWindows} bounceMarkerAndOpenWindow={this.bounceMarkerAndOpenWindow} map={this.state.map} />
       </main>

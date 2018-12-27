@@ -32,7 +32,7 @@ button.list-button:hover {
   background-color: #333333;
 }
 
-button.toggle-button {
+#toggle-button {
   background-color: white;
   position: absolute;
   left: 100%;
