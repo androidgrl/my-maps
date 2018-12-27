@@ -7,6 +7,7 @@ class SideBar extends Component {
     filterTerm: ''
   }
 
+  //hide or show the sidebar, toggle the toggle button arrow, and remove sidebar buttons from tabindex when sidebar is collapsed
   toggleSidebar = () => {
     const sidebar = document.getElementById('sidebar');
     const toggleArrow = document.getElementById('toggle-arrow');
@@ -31,6 +32,7 @@ class SideBar extends Component {
     }
   }
 
+  //when filter button is clicked set the filter term
   updateFilterTerm = (event) => {
     event.preventDefault();
     const filterTerm = document.getElementById('search-field').value;
@@ -42,6 +44,7 @@ class SideBar extends Component {
     let filteredMarkersAndWindows;
     let leftoverMarkersAndWindows;
 
+    //use regex to filter the list items and map markers based on the entered filter term
     if (filterTerm) {
       const match = new RegExp(escapeRegExp(filterTerm), 'i');
       filteredMarkersAndWindows = this.props.markersAndWindows.filter((object) => match.test(object.marker.title));

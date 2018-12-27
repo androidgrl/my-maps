@@ -18,6 +18,7 @@ class App extends Component {
     window.initMap = this.initMap;
   }
 
+  //initialize the google map then call initMarkers
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       zoom: 12,
@@ -32,6 +33,7 @@ class App extends Component {
     this.initMarkers();
   }
 
+  //for each venue create a marker and infowindow and add a click event listener to each marker
   initMarkers = () => {
     const markersAndWindows = this.props.venues.map((venue) => {
       const marker = new window.google.maps.Marker({
@@ -54,6 +56,7 @@ class App extends Component {
     this.setState({markersAndWindows})
   }
 
+  //open the info window and create a bounce animation when the marker is clicked
   bounceMarkerAndOpenWindow = (marker, infoWindow, map) => {
     if (this.state.currentWindow) {
       this.state.currentWindow.close();
@@ -75,6 +78,7 @@ class App extends Component {
   }
 }
 
+//attach the script tag to the dom
 function loadScript(url) {
   const noScript = window.document.getElementsByTagName('noscript')[0];
   const script = window.document.createElement('script');
