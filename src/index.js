@@ -16,4 +16,4 @@ fetch("https://api.foursquare.com/v2/venues/search?ll=-17.4887889,-149.9130473&v
     ReactDOM.render(<App url={"https://maps.googleapis.com/maps/api/js?v=3&key=" + googleKey + "&callback=initMap"} venues={venues} />, document.getElementById('root'));
   }).catch((error) => ReactDOM.render(<ErrorPage />, document.getElementById('root')));
 
-serviceWorker.unregister();
+serviceWorker.register();
