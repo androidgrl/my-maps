@@ -14,17 +14,21 @@
   left: -20%;
 }
 
-#sidebar ul {
-  list-style: none;
-  padding: 0;
+#sidebar button {
+  width: 100%;
+  padding: 1em;
+  color: lightgray;
+  background: black;
+  text-align: left;
+  font-size: 0.8em;
+  border: none;
 }
 
-#sidebar li {
-  padding: 0.5em;
-  color: #A4A4A4;
+#sidebar button:focus {
+  background-color: #333333;
 }
 
-#sidebar li:hover {
+#sidebar button:hover {
   background-color: #333333;
 }
 

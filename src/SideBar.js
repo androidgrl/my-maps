@@ -40,21 +40,19 @@ class SideBar extends Component {
 
     return(
       <div id="sidebar">
-        <div className="toggle-button" onClick={this.toggleSidebar}>
+        <div className="toggle-button" onClick={this.toggleSidebar} tabIndex="1">
           <span></span>
           <span></span>
           <span></span>
         </div>
         <form onSubmit={this.updateFilterTerm}>
           <label className="search-label" htmlFor="location-search">Filter Locations</label>
-          <input type="search" id="search-field" name="query" aria-label="Filter map locations"/>
-          <input className="search-button" type="submit" value="Filter"/>
+          <input type="search" id="search-field" name="query" aria-label="Filter map locations" tabIndex="1"/>
+          <input className="search-button" type="submit" value="Filter" tabIndex="1"/>
         </form>
-        <ul>
-          {filteredMarkersAndWindows.map((object) => (
-            <li key={object.marker.title} onClick={() => this.props.bounceMarkerAndOpenWindow(object.marker, object.infoWindow, this.props.map)}>{object.marker.title}</li>
-          ))}
-        </ul>
+        {filteredMarkersAndWindows.map((object) => (
+          <button key={object.marker.title} onClick={() => this.props.bounceMarkerAndOpenWindow(object.marker, object.infoWindow, this.props.map)} tabIndex="1">{object.marker.title}</button>
+        ))}
       </div>
     )
   }
